@@ -1,0 +1,19 @@
+<% if (errors.length > 0) { %>
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            <% errors.forEach(message => { %>
+                <li><%= message %></li>
+            <% }) %>
+        </ul>
+    </div><!-- alert -->
+<% } %>
+
+<% if (success.length > 0) { %>
+    <div class="alert alert-success">
+        <ul class="mb-0">
+            <% success.forEach(message => { %>
+                <li><%= message %></li>
+            <% }) %>
+        </ul>
+    </div><!-- alert -->
+<% } %>

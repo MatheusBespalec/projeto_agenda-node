@@ -1,0 +1,36 @@
+<%- include('components/head') %>
+<%- include('components/navbar') %>
+
+<div class="container my-5">
+    <%- include('components/messages') %>
+    <h3 class="text-center">
+        <% if (typeof contact !== 'undefined') { %>
+            Editar Contato 
+        <% } else { %> 
+            Cadastre um novo contato
+        <% } %>
+    </h3>
+    <% if (typeof contact !== 'undefined') { %>
+        <form action="/contato/<%= contact._id %>/update" method="post">
+    <% } else { %> 
+        <form action="/contato/register" method="post">
+    <% } %>
+    
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <div class="form-group">
+            <label>Nome</label>
+            <input type="text" name="name" class="form-control" <% if (typeof contact !== 'undefined') { %> value="<%= contact.name %>" <% } %>>           
+        </div>
+        <div class="form-group">
+            <label>Telefone</label>
+            <input type="text" name="phone" class="form-control" <% if (typeof contact !== 'undefined') { %> value="<%= contact.phone %>" <% } %>>           
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" name="email" class="form-control" <% if (typeof contact !== 'undefined') { %> value="<%= contact.email %>" <% } %>>           
+        </div>
+        <button class="btn btn-primary mt-3"><% if (typeof contact !== 'undefined') { %> Salvar Alterações <% } else { %> Cadastrar Contato <% } %></button>
+    </form>
+</div><!-- container -->
+
+<%- include('components/footer') %>
